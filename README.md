@@ -1,6 +1,7 @@
 # php-stegano-lsb
 
-Hide file using Least Significant bits technic.
+Hide file using Least Significant bits method.  
+See https://10degres.net/steganography/
 
 ## Install
 
