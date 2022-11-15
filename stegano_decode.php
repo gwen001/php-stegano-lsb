@@ -1,7 +1,7 @@
 <?php
 
 function usage( $err=null ) {
-  echo 'Usage: '.$_SERVER['argv'][0]." <file hosting the message>\n";
+  echo 'Usage: '.$_SERVER['argv'][0]." <file hosting the message JPEG|GIF|PNG>\n";
   if( $err ) {
     echo 'Error: '.$err."\n";
   }
