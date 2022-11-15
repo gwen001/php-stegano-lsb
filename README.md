@@ -13,12 +13,12 @@ git clone https://github.com/gwen001/php-stegano-lsb
 
 ```
 $ php stegano_encode.php
-Usage: stegano_encode.php <file to hide> <host file>
+Usage: stegano_encode.php <file to hide> <host file JPEG|GIF|PNG>
 ```
 
 ```
 $ php stegano_decode.php
-Usage: stegano_decode.php <file hosting the message>
+Usage: stegano_decode.php <file hosting the message JPEG|GIF|PNG>
 ```
 
 ---
