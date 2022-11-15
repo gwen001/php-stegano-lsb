@@ -1,7 +1,7 @@
 <?php
 
 function usage( $err=null ) {
-  echo 'Usage: '.$_SERVER['argv'][0]." <source file to hide> <image destination file>\n";
+  echo 'Usage: '.$_SERVER['argv'][0]." <file to hide> <host file>\n";
   if( $err ) {
     echo 'Error: '.$err."\n";
   }
@@ -69,14 +69,14 @@ imagepng( $img, 'out.png' );
 function inject( $img, $data, $start_line )
 {
   global $img_w;
-  
+
   $str = '';
   $l = strlen( $data );
   for( $i=0 ; $i<$l ; $i++) { // convert message to binary
     $str .= sprintf( "%08b", ord($data[$i]) );
   }
   //var_dump( $str );
-  
+
   $x = 0;
   $y = $start_line;
   $l = strlen( $str );
@@ -92,24 +92,24 @@ function inject( $img, $data, $start_line )
       $rgb['r'] = bindec( $red );
       //var_dump( $red );
     }
-    
+
     if( $i < $l ) {
       $green = decbin( $rgb['g'] );
       $green[strlen($green)-1] = $str[$i++];
       $rgb['g'] = bindec( $green );
       //var_dump( $green );
     }
-    
+
     if( $i < $l ) {
       $blue = decbin( $rgb['b'] );
       $blue[strlen($blue)-1] = $str[$i++];
       $rgb['b'] = bindec( $blue );
       //var_dump( $blue );
     }
-    
+
     //var_dump( $rgb );
     _imagesetpixel( $img, $x, $y, $rgb );
-    
+
     $x++;
     if( $x == $img_w ) {
       $x = 0;

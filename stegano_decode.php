@@ -1,7 +1,7 @@
 <?php
 
 function usage( $err=null ) {
-  echo 'Usage: '.$_SERVER['argv'][0]." <image source file JPEG|GIF|PNG>\n";
+  echo 'Usage: '.$_SERVER['argv'][0]." <file hosting the message>\n";
   if( $err ) {
     echo 'Error: '.$err."\n";
   }
@@ -42,7 +42,9 @@ switch( $img_t )
 
 // run
 $meta = _extract( $img, 0, 1 );
+// var_dump($meta);
 $data = _extract( $img, 1, $img_h );
+// var_dump($data);
 file_put_contents( $meta, $data );
 
 
@@ -50,7 +52,7 @@ file_put_contents( $meta, $data );
 function _extract( $img, $start_line, $end_line )
 {
   global $img_w;
-  
+
   $str = '';
   for( $y=$start_line ; $y<$end_line ; $y++ ) {
     for( $x=0 ; $x<$img_w ; $x++ ) {
@@ -65,7 +67,7 @@ function _extract( $img, $start_line, $end_line )
     }
   }
   //var_dump( $str );
-  
+
   $final = '';
   $t_str = str_split( $str, 8 );
   //var_dump( $t_str );
@@ -78,8 +80,8 @@ function _extract( $img, $start_line, $end_line )
       $final .= $c;
     }
   }
-  
-  //var_dump( $final );
+
+//   var_dump( $final );
   return base64_decode( $final );
 }
 
